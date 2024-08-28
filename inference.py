@@ -584,9 +584,9 @@ def run(save_suppl=False):
     else:
         op_device = torch.device('cpu')
 
-    INPUT_PATH = Path("./test/input")
-    OUTPUT_PATH = Path("./test/output")
-    RESOURCE_PATH = Path("./resources")
+    INPUT_PATH = Path("/input")
+    OUTPUT_PATH = Path("/output")
+    RESOURCE_PATH = Path("resources")
 
     hpm_reg_model = ctp4D_cnn3D_solver(input_size=(1, 50, 256, 256), output_channel=5, encoder='densenet121')
     hpm_reg_model = load_checkpoint(hpm_reg_model, torch.load(RESOURCE_PATH / 'hpm_reg_model.pth', weights_only=True),
