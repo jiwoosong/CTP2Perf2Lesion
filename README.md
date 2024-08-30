@@ -1,5 +1,5 @@
 # CTP2Perf2Lesion
-***
+
 This repository contains the code and pre-trained models developed for the [ISLES'24](https://isles-24.grand-challenge.org/) Challenge, where we employed a 2-step inference approach to address the challenges of ischemic lesion detection from CTP source images. 
 Predicting lesions directly from CTP images is challenging and often fails to generalize well in testing, necessitating a more intuitive network design.
 To overcome this, we focused on key hemodynamic parameters like CBF and TMAX, which are essential for lesion classification. 
@@ -10,7 +10,7 @@ This structured approach leverages the relationships between hemodynamic paramet
 
 
 ## Installation
-***
+
 * Clone this repository:
    ```
    $ git clone https://github.com/jiwoosong/CTP2Perf2Lesion.git
@@ -22,7 +22,7 @@ This structured approach leverages the relationships between hemodynamic paramet
    ```
 
 ## Inference
-***
+
 * Run `inference.py`: you need to change  `INPUT_PATH`, `OUTPUT_PATH`, `RESOURCE_PATH` as necessary path. If you want to see visualization, set `save_suppl=True`.
    ```python
    INPUT_PATH = Path("./test/input")
@@ -35,7 +35,7 @@ This structured approach leverages the relationships between hemodynamic paramet
    ```
   
 ## Results
-***
+
 * supplementary Results
   <img src="/test/output/images/supplementary/0030.png">
   <img src="/test/output/images/supplementary/0040.png">
