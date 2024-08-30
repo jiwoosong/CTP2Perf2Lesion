@@ -657,4 +657,4 @@ def _show_torch_cuda_info():
     print("=+=" * 10)
 
 if __name__ == "__main__":
-    raise SystemExit(run(save_suppl=False))
+    raise SystemExit(run(save_suppl=True))

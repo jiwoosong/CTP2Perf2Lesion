@@ -1,49 +1,41 @@
-# isles24-docker-template
+# CTP2Perf2Lesion
+***
+This repository contains the code and pre-trained models developed for the [ISLES'24](https://isles-24.grand-challenge.org/) Challenge, where we employed a 2-step inference approach to address the challenges of ischemic lesion detection from CTP source images. 
+Predicting lesions directly from CTP images is challenging and often fails to generalize well in testing, necessitating a more intuitive network design.
+To overcome this, we focused on key hemodynamic parameters like CBF and TMAX, which are essential for lesion classification. 
+We developed a regression model capable of extracting these parameters and lesion areas from CTP source images, effectively capturing meaningful and clear hemodynamic information from the 4D data. 
+In the second step, a UNet-based segmentation model generates the ischemic lesion mask from on the HPM regression results. 
+This structured approach leverages the relationships between hemodynamic parameters and lesion characteristics, potentially enhancing detection accuracy.
 
-This is an example Docker template for submitting to the ISLES'24 challenge.
 
-## Instructions
 
-1. **Clone this repository.**
+## Installation
+***
+* Clone this repository:
+   ```
+   $ git clone https://github.com/jiwoosong/CTP2Perf2Lesion.git
+   ```
 
-2. **Download and decompress the [example image](https://drive.switch.ch/index.php/s/HCrdrSC556tWfRK) to be used for testing your algorithm.** The structure of your local repo should look like this:
+* Install the dependencies:
+   ``` bash
+   $ pip install -r requirements.txt
+   ```
 
-    ```plaintext
-    isles24-docker-template/
-    ├── test/
-    │   ├── input/
-    │   │   ├── images/
-    │   │   │   ├── non-contrast-ct/
-    │   │   │   │   └── xxx.mha
-    │   │   │   ├── cbf-parameter-map/
-    │   │   │   │   └── xxx.mha
-    │   │   └── acute_stroke_clinical_information.json
-    │   └── output/  # This will be created by your script
-    └── (... other files ...)
-    ```
-
-3. **Update the scripts.**
-
-   3.1 **Update `inference.py` script** by including your algorithmic solution. Note: As the challenge data is heavy, only read the images that your algorithm needs!
-
-   3.2 **Update `requirements.txt`** by including all the packages your algorithm needs. You can specify package versions, e.g.:
-
-    ```plaintext
-    SimpleITK
-    numpy
-    torch==2.4.0
-    ```
-
-4. **Test your algorithm** by running `./test_run.sh`. This script should predict the example image, saving the result in `test/output/`.
-
-5. **Export and prepare the container for upload to Grand-Challenge.org.**
-
-   - **Option 1: Save and upload your Docker image to Grand-Challenge.** You can do this by saving the Docker image as a `.tar.gz` file and then uploading it:
-
-     ```sh
-     docker save example-algorithm-preliminary-docker-evaluation | gzip -c > example-algorithm-preliminary-docker-evaluation.tar.gz
-     ```
-
-   - **Option 2: Link a GitHub repository to Grand-Challenge for building and integration.** Create your own GitHub repository and follow [these instructions](https://grand-challenge.org/documentation/linking-a-github-repository-to-your-algorithm/).
-
-6. **Further information** about preparing Dockers for Grand-Challenge can be found [here](https://grand-challenge.org/documentation/create-your-own-algorithm/).
+## Inference
+***
+* Run `inference.py`: you need to change  `INPUT_PATH`, `OUTPUT_PATH`, `RESOURCE_PATH` as necessary path. If you want to see visualization, set `save_suppl=True`.
+   ```python
+   INPUT_PATH = Path("./test/input")
+   OUTPUT_PATH = Path("./test/output")
+   RESOURCE_PATH = Path("./resources")
+   ```
+   ```python
+   if __name__ == "__main__":
+       raise SystemExit(run(save_suppl=True))
+   ```
+  
+## Results
+***
+* supplementary Results
+  <img src="/test/output/images/supplementary/0030.png">
+  <img src="/test/output/images/supplementary/0040.png">
