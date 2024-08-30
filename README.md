@@ -13,7 +13,7 @@ This structured approach leverages the relationships between hemodynamic paramet
 
 * Clone this repository:
    ```
-   $ git clone https://github.com/jiwoosong/CTP2Perf2Lesion.git
+   $ git clone https://github.com/jiwoosong/isles24-docker-template.git
    ```
 
 * Install the dependencies:
