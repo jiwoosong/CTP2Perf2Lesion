@@ -36,6 +36,6 @@ This structured approach leverages the relationships between hemodynamic paramet
   
 ## Results
 
-* supplementary Results
+* supplementary Results (CTP/CBF reg/TMAX reg/lesion reg/lesion seg)
   <img src="/test/output/images/supplementary/0030.png">
   <img src="/test/output/images/supplementary/0040.png">
